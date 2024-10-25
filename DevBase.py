@@ -13,9 +13,9 @@ class DevBase:
         pass
     
     def _create_job_configuration(self,**kwargs):
-        
+
         create_job = config.default_config.job_config.create_job
-        payload = {}
-        response = requests.post(f"{self.base_url}{self.gateway}{create_job}")
+
+        response = requests.post(f"{self.base_url}{self.gateway}{create_job}",params=kwargs)
 
 
