@@ -23,8 +23,8 @@ class EDQClientRest(DevBase):
         
         """
         params = {'filelist':file_list}
-        json_response = self._create_job_configuration(params)
-        return {"status":f"Job ID created: {json_response['datasetConfigurationId']}"}
+        json_response = self._create_dataset(params)
+        return {"status":f"DataSet ID created: {json_response['datasetConfigurationId']}"}
     
 
     def _create_ruleset(self,file_list):
@@ -33,17 +33,17 @@ class EDQClientRest(DevBase):
         """
         #YTD input params
         params = {} 
-        json_response = self._create_job_configuration(params)
-        return {"status":f"Job ID created: {json_response['rulesetId']}"}
+        json_response = self._create_rule_set(params)
+        return {"status":f"RuleSet ID created: {json_response['rulesetId']}"}
     
-    def _create_rule(self,rules):
+    def _create_rule(self,**kwargs):
         """
         creation of rules and attaching rules to ruleset
         
         """
-        params = {'rules':rules}
-        json_response = self._create_job_configuration(params)
-        return {"status":f"Job ID created: {json_response['jobId']}"}
+      
+        json_response = self._create_rule(kwargs)
+        return {"status":f"Rule IDcreated: {json_response['jobId']}"}
     
     def _schedule_job(self,jobId):
         """
@@ -52,6 +52,6 @@ class EDQClientRest(DevBase):
         """
         params = {'datasetConfigurationId':config.default_config.datasets[config.default_config.datasets.keys()[0]],
                   'jobId':jobId}
-        json_response = self._create_job_configuration(params)
+        json_response = self._schedule_job(params)
         return {"status":f"Job ID created: {json_response['jobId']}"}
     
