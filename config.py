@@ -17,7 +17,9 @@ default_config = {
 "datasets":{
     "PR_GR_A1_LEDGER":"3fa85f64-5717-4562-b3fc-2c963f66afa6"
 }
-
-
+,
+"URL": "https://api.it.cloud.capitalone.com",
+"s3_bucket": "cof-sts-lt-globalonedev",
+"dataset_id": "PR_G1_PS_LEDGER_YTD_STAGING_EDQ_JOB_ID"
 
 }
