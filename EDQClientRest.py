@@ -18,8 +18,7 @@ class EDQClientRest(DevBase):
 
     def _create_dataset(self,file_list):
         
-        """Creation of Job with request body
-            with as filelist
+        """creating dataset
         
         """
         params = {'filelist':file_list}
@@ -36,9 +35,14 @@ class EDQClientRest(DevBase):
         json_response = self._create_rule_set(params)
         return {"status":f"RuleSet ID created: {json_response['rulesetId']}"}
     
-    def _check_for_rule_set(self,rulesetId):
+    def _check_for_rule_exists(self,ruleId):
+        params = {'datasetConfigurationId':config.default_config.datasets[config.default_config.datasets.keys()[0]]}
+        rules = self._check_for_rule_exists(params)
+        if ruleId in rules:
+            return True
+        else:
+            return False
         
-        pass
     def _create_rule(self,**kwargs):
         """
         creation of rules and attaching rules to ruleset

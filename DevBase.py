@@ -41,5 +41,28 @@ class DevBase:
             return response
         else:
             return {'status':'Invalid Response'}
+        
+    def _check_if_rule_exists(self,**kwargs):
+        create_rule_set = config.default_config['rule_config']['create_rule']
+        response = requests.post(f"{self.base_url}{self.gateway}{create_rule_set}",params=kwargs,headers=self.headers)
+        if response.status_code == 200:
+            return [row.ruleId for row in response]
+        else:
+            return []
+        
+    def _check_if_dataset_exists(self,**kwargs):
+        params = {'datasetId':kwargs['datasetId']}
+        create_dataset = config.default_config.dataset_config.create_dataset
+        response = requests.post(f"{self.base_url}{self.gateway}{create_dataset}",params=kwargs,headers=self.headers)
+        if response.status_code == 200:
+            return True
+        elif response.status_code == 404:
+            return False
+
+
+    def _retrieve_all_rulesets(self,**kwargs):
+        
+
+
 
 
