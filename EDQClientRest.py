@@ -27,15 +27,18 @@ class EDQClientRest(DevBase):
         return {"status":f"DataSet ID created: {json_response['datasetConfigurationId']}"}
     
 
-    def _create_rulesetId(self,rule_list):
+    def _create_rulesetId(self,name):
         """
         create ruleset and get the ruleset Id
         """
         #YTD input params
-        params = {"rulelist":rule_list} 
+        params = {"rulesetName":name} 
         json_response = self._create_rule_set(params)
         return {"status":f"RuleSet ID created: {json_response['rulesetId']}"}
     
+    def _check_for_rule_set(self,rulesetId):
+        
+        pass
     def _create_rule(self,**kwargs):
         """
         creation of rules and attaching rules to ruleset

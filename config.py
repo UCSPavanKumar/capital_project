@@ -8,7 +8,7 @@ default_config = {
     },
     "rule_config":{
         "create_ruleset":"/job-configuration-rulesets",
-        "create-rule":"/job-configuration-rules"
+        "create_rule":"/job-configuration-rules"
 
     },
     "dataset_config":{

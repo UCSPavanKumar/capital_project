@@ -9,17 +9,18 @@ class DQhandler(EDQClientRest):
         self.s3_handler = S3handler()
         super().__init__(self)
     
-    def _create_ruleset(self):
+    def _create_ruleset(self,name):
         """
         Create ruleset for the dataset ID
         """
-        pass
+        ruleset_response = self._create_rulesetId("check_for_null_values")
+        return ruleset_response['rulesetId']
     
-    def _create_ruleset(self):
+    def _attach_rules_to_ruleset(self,rulelist):
         """
-        creation of ruleset and attach rulelist to the ruleset
+        attaching rulelist to the ruleset
         """
-        rulelist = self._create_rulelist()
+        rulelistId = self._create_ruleset()
         response = self._create_rulesetId(rulelist)
         return response
 
