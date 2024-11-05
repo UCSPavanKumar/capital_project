@@ -15,12 +15,12 @@ class S3handler:
         """
         preparing file format with filename
         """
-        path =f"api-sts/{process_name}/{file_name}"
+        path =f"{process_name}/{file_name}"
         return path
     
     def get_s3_file(self):
         bucket = config.default_config['s3_bucket']
-        key = self.s3_prepare_file('sample','example.csv')
+        key = self.s3_prepare_file('OneLake','ACCOUNT-August2024_20240809.txt')
         try:
             response = self.s3_client.get_object(Bucket=bucket,Key=key)
             body = response['Body']
